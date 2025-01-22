@@ -2,21 +2,26 @@
   "messages": [
     {
       "role": "user",
-      "content": "my name is Andrew",
-      "id": "b8683396-cfab-4b8e-906f-1e38b66c2a89",
-      "createdAt": "2025-01-16T00:59:01.622Z"
-    },
-    {
-      "role": "user",
-      "content": "what is my name?",
-      "id": "e46dc440-ee56-454f-a055-e165e30cd63a",
-      "createdAt": "2025-01-16T01:01:08.179Z"
+      "content": "what is the weather?",
+      "id": "14dc6301-aa18-4c7f-a132-3f361e13e09c",
+      "createdAt": "2025-01-16T02:37:19.292Z"
     },
     {
       "role": "assistant",
-      "content": "Your name is Andrew.",
-      "id": "a75c46fb-d3a3-415e-9ec1-d83e3f258a12",
-      "createdAt": "2025-01-16T01:01:09.636Z"
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_EldGSDBJwFS5YM93pFr1bZOY",
+          "type": "function",
+          "function": {
+            "name": "get_weather",
+            "arguments": "{}"
+          }
+        }
+      ],
+      "refusal": null,
+      "id": "93274414-8d95-4a43-94e7-16f77f4d30c7",
+      "createdAt": "2025-01-16T02:37:21.303Z"
     }
   ]
 }
