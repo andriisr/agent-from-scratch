@@ -1,45 +1,59 @@
-import { v4 as uuidv4 } from 'uuid';
-import type { AIMessage } from '../types';
-import { JSONFilePreset } from 'lowdb/node';
+import { v4 as uuidv4 } from 'uuid'
+import type { AIMessage } from '../types'
+import { JSONFilePreset } from 'lowdb/node'
 
 export type MessageWithMetadata = AIMessage & {
-    id: string;
-    createdAt: string;
+  id: string
+  createdAt: string
 }
 
 type Data = {
-    messages: MessageWithMetadata[];
+  messages: MessageWithMetadata[]
 }
 
 export const addMetadata = (message: AIMessage) => {
-    return {
-        ...message,
-        id: uuidv4(),
-        createdAt: new Date().toISOString(),
-    }
+  return {
+    ...message,
+    id: uuidv4(),
+    createdAt: new Date().toISOString(),
+  }
 }
 
 export const removeMetadata = (message: MessageWithMetadata) => {
-    const { id, createdAt, ...rest } = message;
-    return rest;
+  const { id, createdAt, ...rest } = message
+  return rest
 }
 
 const defaultData: Data = {
-    messages: [],
+  messages: [],
 }
 
 const getDb = async () => {
-    const db = await JSONFilePreset<Data>('db.json', defaultData);
-    return db;
+  const db = await JSONFilePreset<Data>('db.json', defaultData)
+  return db
 }
 
 export const addMessages = async (messages: AIMessage[]) => {
-    const db = await getDb();
-    db.data.messages.push(...messages.map(addMetadata));
-    await db.write();
+  const db = await getDb()
+  db.data.messages.push(...messages.map(addMetadata))
+  await db.write()
 }
 
 export const getMessages = async () => {
-    const db = await getDb();
-    return db.data.messages.map(removeMetadata);
+  const db = await getDb()
+  return db.data.messages.map(removeMetadata)
+}
+
+export const saveToolResponse = (
+  toolCallId: string,
+  toolResponse: string | Error
+) => {
+  return addMessages([
+    {
+      role: 'tool',
+      content:
+        typeof toolResponse === 'string' ? toolResponse : toolResponse.message,
+      tool_call_id: toolCallId,
+    },
+  ])
 }

@@ -3,25 +3,71 @@
     {
       "role": "user",
       "content": "what is the weather?",
-      "id": "14dc6301-aa18-4c7f-a132-3f361e13e09c",
-      "createdAt": "2025-01-16T02:37:19.292Z"
+      "id": "be5afba7-c6b6-40c2-918c-47b3e1d0a1bd",
+      "createdAt": "2025-02-19T02:59:57.458Z"
+    },
+    {
+      "role": "assistant",
+      "content": "Could you please specify the location for which you would like to know the weather?",
+      "refusal": null,
+      "id": "67e62298-dd65-4af9-bb0b-930ce8a3ef02",
+      "createdAt": "2025-02-19T03:00:00.524Z"
+    },
+    {
+      "role": "user",
+      "content": "Portsmouth NH",
+      "id": "cdfbee4b-3341-4166-8546-c96a429f65dc",
+      "createdAt": "2025-02-19T03:00:14.658Z"
     },
     {
       "role": "assistant",
       "content": null,
       "tool_calls": [
         {
-          "id": "call_EldGSDBJwFS5YM93pFr1bZOY",
+          "id": "call_u874yu28WwKerFRI6rrAhPGo",
           "type": "function",
           "function": {
             "name": "get_weather",
-            "arguments": "{}"
+            "arguments": "{\"resoning\":\"To provide the current weather information for Portsmouth, NH.\"}"
           }
         }
       ],
       "refusal": null,
-      "id": "93274414-8d95-4a43-94e7-16f77f4d30c7",
-      "createdAt": "2025-01-16T02:37:21.303Z"
+      "id": "25f154b6-b7d4-4f01-921f-f6f97e45f0ac",
+      "createdAt": "2025-02-19T03:00:15.688Z"
+    },
+    {
+      "role": "tool",
+      "content": "hot, 90 deg",
+      "tool_call_id": "call_u874yu28WwKerFRI6rrAhPGo",
+      "id": "dd73366c-c22c-47b7-ac5c-261798024f36",
+      "createdAt": "2025-02-19T03:00:15.691Z"
+    },
+    {
+      "role": "user",
+      "content": "what is the wather?",
+      "id": "a9e4325d-6b1d-41fd-b99a-d600bb2e5529",
+      "createdAt": "2025-02-19T03:06:27.008Z"
+    },
+    {
+      "role": "assistant",
+      "content": "The current weather in Portsmouth, NH is hot, with a temperature of 90 degrees.",
+      "refusal": null,
+      "id": "2ce2455a-fa0a-4df5-9b25-a1bc7b9a3b98",
+      "createdAt": "2025-02-19T03:06:29.449Z"
+    },
+    {
+      "role": "user",
+      "content": "tell me what the weather is right now thoug",
+      "id": "bb8c9b5c-9e1c-4882-b80a-46b0d96f2cc8",
+      "createdAt": "2025-02-19T03:07:12.684Z"
+    },
+    {
+      "role": "assistant",
+      "content": "I currently don't have real-time weather data access. However, based on the last information I received, it was hot with a temperature of 90 degrees in Portsmouth, NH. For the most accurate and up-to-date weather information, I recommend checking a reliable weather website or app.",
+      "refusal": null,
+      "id": "b1d0facd-233e-4aec-b5e2-811e5c290ee0",
+      "createdAt": "2025-02-19T03:07:13.979Z"
     }
   ]
 }
