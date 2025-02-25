@@ -21,7 +21,6 @@ export const runAgent = async ({
 
   while (true) {
     const history = await getMessages()
-    console.log(history)
     const response = await runLLM({ messages: history, tools: tools })
     await addMessages([response])
     logMessage(response)

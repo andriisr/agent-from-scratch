@@ -1,6 +1,7 @@
 import OpenAI from 'openai'
-
-const getWeather = (__input: object) => Promise.resolve('hot, 90 deg')
+import { generateImage } from './tools/generateImage'
+import { reddit } from './tools/reddit'
+import { dadJoke } from './tools/dadJoke'
 
 export const runTool = async (
   toolCall: OpenAI.Chat.Completions.ChatCompletionMessageToolCall,
@@ -12,8 +13,12 @@ export const runTool = async (
   }
 
   switch (toolCall.function.name) {
-    case 'get_weather':
-      return getWeather(input)
+    case 'generate_image':
+      return generateImage(input)
+    case 'dad_joke':
+      return dadJoke(input)
+    case 'reddit':
+      return reddit(input)
     default:
       return Promise.resolve(
         new Error(`Unknown too: ${toolCall.function.name}`)
